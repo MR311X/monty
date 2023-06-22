@@ -44,6 +44,13 @@ void (*get_opcode_function(char *opcode))(stack_t **stack,
 		{"swap", swap},
 		{"add", add},
 	{"nop", nop},
+	{"sub", sub},
+    {"div", divide},
+    {"mod", modulus},
+    {"mul", mul},
+    {"pchar", pchar},
+    {"pstr", pstr},
+    {"rotl", rotl},
 	{NULL, NULL}
 	};
 
