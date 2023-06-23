@@ -1,4 +1,4 @@
-#include "monty.h" 
+#include "monty.h"
 
 /**
  * is_integer - Checks if a string is a valid integer.
@@ -14,7 +14,7 @@ int is_integer(const char *str)
 		str++;
 
 	if (*str == '\0')
-		return 0;
+		return (0);
 
 	while (*str != '\0')
 	{
@@ -28,7 +28,7 @@ int is_integer(const char *str)
 
 /**
  * get_opcode_function - Retrieves the function associated with an opcode.
- * @opcode: The opcode string.
+ * @line_number: The line number the line is read from.
  * Return: A function pointer to the opcode function, or NULL if not found.
  */
 void (*get_opcode_function(char *opcode))(stack_t **stack,
@@ -43,24 +43,24 @@ void (*get_opcode_function(char *opcode))(stack_t **stack,
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
-	{"nop", nop},
-	{"sub", sub},
-    {"div", divide},
-    {"mod", modulus},
-    {"mul", mul},
-    {"pchar", pchar},
-    {"pstr", pstr},
-    {"rotl", rotl},
-	{NULL, NULL}
+		{"nop", nop},
+		{"sub", sub},
+		{"div", divide},
+		{"mod", modulus},
+		{"mul", mul},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{NULL, NULL}
 	};
 
-for (i = 0; instructions[i].opcode != NULL; i++)
-{
-if (strcmp(instructions[i].opcode, opcode) == 0)
-return instructions[i].f;
-}
+	for (i = 0; instructions[i].opcode != NULL; i++)
+	{
+		if (strcmp(instructions[i].opcode, opcode) == 0)
+			return (instructions[i].f);
+	}
 
-return NULL;
+	return (NULL);
 }
 
 /**
@@ -69,11 +69,13 @@ return NULL;
  */
 void free_stack(stack_t *stack)
 {
-    stack_t *current = stack;
-    while (current != NULL)
-    {
-        stack_t *next = current->next;
-        free(current);
-        current = next;
-    }
+	stack_t *current = stack;
+
+	while (current != NULL)
+	{
+		stack_t *next = current->next;
+
+		free(current);
+		current = next;
+	}
 }
